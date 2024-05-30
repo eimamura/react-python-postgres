@@ -1,0 +1,13 @@
+name: myapp
+
+services:
+  api:
+    build:
+      context: backend
+      target: builder
+    container_name: fastapi
+    environment:
+      PORT: 8000
+    ports:
+      - '8000:8000'
+    restart: "no"
