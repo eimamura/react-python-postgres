@@ -4,10 +4,18 @@ services:
   api:
     build:
       context: backend
-      target: builder
+      dockerfile: Dockerfile
     container_name: fastapi
     environment:
       PORT: 8000
     ports:
       - '8000:8000'
     restart: "no"
+    volumes:
+      - ./backend:/workspace
+    secrets:
+      - my-password
+
+secrets:
+  my-password:
+    file: dev.env

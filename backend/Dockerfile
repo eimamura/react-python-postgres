@@ -1,26 +1,21 @@
-# syntax = docker/dockerfile:1.4
+# Use the official Python image from the Docker Hub
+FROM python:3.9-slim
 
-FROM tiangolo/uvicorn-gunicorn-fastapi:python3.9-slim AS builder
+# Set the working directory in the container
+WORKDIR /workspace
 
-WORKDIR /appi
+# Copy the requirements file into the container
+COPY requirements.txt .
 
-COPY requirements.txt ./
-RUN --mount=type=cache,target=/root/.cache/pip \
-    pip install -r requirements.txt
+# Install the dependencies specified in requirements.txt
+RUN pip install --no-cache-dir -r requirements.txt
 
-COPY ./app ./app
+# Copy the FastAPI application code into the container
+COPY . .
 
-FROM builder as dev-envs
+# Expose the port FastAPI will run on
+EXPOSE 8000
 
-RUN <<EOF
-apt-get update
-apt-get install -y --no-install-recommends git
-EOF
-
-RUN <<EOF
-useradd -s /bin/bash -m vscode
-groupadd docker
-usermod -aG docker vscode
-EOF
-# install Docker tools (cli, buildx, compose)
-COPY --from=gloursdocker/docker / /
+# Command to run the FastAPI application using uvicorn
+CMD ["uvicorn", "src.main:app", "--host", "0.0.0.0", "--port", "8000", "--reload"]
+# CMD ["bash"]
