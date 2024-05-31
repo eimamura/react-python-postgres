@@ -7,7 +7,7 @@ ri:
 p:
 	docker ps -a
 l:
-	docker logs fastapi
+	docker logs -f fastapi
 a:
 	docker attach fastapi
 s:

@@ -7,7 +7,7 @@ ri:
 p:
 	docker ps -a
 l:
-	docker logs next
+	docker logs -f next
 a:
 	docker attach next
 s:

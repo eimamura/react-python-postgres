@@ -12,7 +12,6 @@ services:
       - '3000:3000'
     volumes:
       - ./frontend:/workspace
-    command: sleep infinity
 
   api:
     build:
@@ -34,3 +33,4 @@ services:
       # secrets:
       #   my-password:
       #     file: dev.env
+

@@ -5,7 +5,6 @@ r:
 	docker compose up -d
 br:
 	docker compose up --build
-
 p:
 	docker compose ps -a
 # ri:
@@ -14,9 +13,9 @@ p:
 
 # Docker
 e:
-	docker exec -it next /bin/bash
+	docker exec -it next /bin/sh
 l:
-	docker logs fastapi
+	docker logs -f next
 a:
 	docker attach fastapi
 s:
