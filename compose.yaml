@@ -1,6 +1,19 @@
 name: myapp
 
 services:
+  web:
+    build:
+      context: frontend
+      dockerfile: Dockerfile
+    container_name: next
+    environment:
+      PORT: 3000
+    ports:
+      - '3000:3000'
+    volumes:
+      - ./frontend:/workspace
+    command: sleep infinity
+
   api:
     build:
       context: backend
@@ -13,11 +26,11 @@ services:
     restart: "no"
     volumes:
       - ./backend:/workspace
-    secrets:
-      - my-password
     env_file:
       - dev.env
+      # secrets:
+      # - my-password
 
-secrets:
-  my-password:
-    file: dev.env
+      # secrets:
+      #   my-password:
+      #     file: dev.env

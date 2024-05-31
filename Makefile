@@ -14,7 +14,7 @@ p:
 
 # Docker
 e:
-	docker exec -it fastapi /bin/bash
+	docker exec -it next /bin/bash
 l:
 	docker logs fastapi
 a:
