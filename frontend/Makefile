@@ -14,3 +14,5 @@ s:
 	docker stop $$(docker ps -q)
 prune:
 	docker system prune -a
+ch:
+	sudo chown -R eimamura:eimamura /home/eimamura/react-python-postgres

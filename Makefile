@@ -21,7 +21,8 @@ a:
 	docker attach fastapi
 s:
 	docker stop $$(docker ps -q)
-
+prune:
+	docker system prune -a
 # Ubuntu
 # printenv
 # echo $PATH
