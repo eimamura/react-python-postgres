@@ -26,7 +26,7 @@ services:
     volumes:
       - ./backend:/workspace
     env_file:
-      - dev.env
+      - .env.local
       # secrets:
       # - my-password
 
